@@ -4,8 +4,9 @@ export const GlobalContext = createContext(null);
 
 export default function GlobalState({ children }) {
 
+  const [step, setStep] = useState(1);
+
   const [details, setDetails] = useState({
-    step: 2,
     firstName: "",
     lastName: "",
     email: "",
@@ -17,25 +18,26 @@ export default function GlobalState({ children }) {
   //Proceed to next step
  
   const nextStep = () => {
-    setDetails((prevState) => {
-    return { ...prevState, step: prevState.step + 1 }
+    setStep((prevState) => {
+    return prevState + 1;
     })
   }
   const prevStep = () => {
-    setDetails((prevState) => {
-    return { ...prevState, step: prevState.step - 1 }
+    setStep((prevState) => {
+    return prevState - 1;
     })
   }
 
-  const handleSubmit = (e) => {
-    // Process form submission logic here
+
+  const handleSubmit = () => {
     e.preventDefault();
-    console.log("Form submitted with data:", state);
+    console.log(details);
   }
+  
 
 
   return (
-    <GlobalContext.Provider value={{ details, nextStep, prevStep, handleSubmit }}>
+    <GlobalContext.Provider value={{ details, nextStep, prevStep, step, setDetails, setStep, handleSubmit }}>
       {children}
     </GlobalContext.Provider>
   )

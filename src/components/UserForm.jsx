@@ -7,17 +7,31 @@ import Success from "./Success";
 import Confirm from "./Confirm";
 
 const UserForm = () => {
-  const { details, nextStep, prevStep, handleSubmit } = useContext(GlobalContext);
+  const { details, nextStep, prevStep, handleSubmit, step } = useContext(GlobalContext);
 
-  switch (details.step) {
+  switch (step) {
     case 1:
-      return <FormPersonalDetails />;
+      return (
+        <form action="">
+          <FormPersonalDetails />
+        </form>
+      );
     case 2:
-      return <FormUserDetails />;
+      return (
+        <form action="">
+          <FormUserDetails />
+        </form>
+      );
     case 3:
-      return <Confirm />;
+      return (
+        <form action="">
+          <Confirm />
+        </form>
+      );
     case 4:
-      return <Success />;
+      return <form action="">
+        <Success />
+      </form>;
   }
 };
 

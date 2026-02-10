@@ -1,26 +1,32 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import Buttons from './Buttons'
+import { GlobalContext } from '../context/Context';
 
 const FormUserDetails = () => {
+
+  const { details, nextStep, prevStep, handleSubmit, step, setDetails } = useContext(GlobalContext);
+
+  console.log(details);
+
   return (
-    <form  className="border w-1/2 mx-auto h-95 flex flex-col justify-center items-center gap-5 m-6" action="">
+    <div  className="border w-1/2 min-w-75 mx-auto h-95 flex flex-col justify-center items-center gap-5 m-6" >
 
 <h1>Fill in the form</h1>
 
       <div className="flex items-center gap-4">
         <label className="w-25 text-lg"  htmlFor="occupation">Occupation:</label>
-        <input className="p-2 w-75 outline-0 border border-gray-200 rounded-md" type="text" name="occupation" id="occupation" />
+        <input className="p-2 w-75 outline-0 border border-gray-200 rounded-md" type="text" name="occupation" id="occupation" value={details.occupation} onChange={(e) => setDetails(prevState => ({ ...prevState, occupation: e.target.value }))} />
       </div>
 
       <div className="flex items-center gap-4">
         <label className="w-25 text-lg"  htmlFor="city">City:</label>
-        <input className="p-2 w-75 outline-0 border border-gray-200 rounded-md" type="text" name="city" id="city" />
+        <input className="p-2 w-75 outline-0 border border-gray-200 rounded-md" type="text" name="city" id="city" value={details.city} onChange={(e) => setDetails(prevState => ({ ...prevState, city: e.target.value }))} />
       </div>
 
       <div>
         <Buttons />
       </div>
-    </form>
+    </div>
   )
 }
 
