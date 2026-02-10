@@ -5,7 +5,7 @@ export const GlobalContext = createContext(null);
 export default function GlobalState({ children }) {
 
   const [details, setDetails] = useState({
-    step: 1,
+    step: 2,
     firstName: "",
     lastName: "",
     email: "",
