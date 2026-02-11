@@ -9,7 +9,7 @@ const FormPersonalDetails = () => {
 
   return (
     <div
-      className="border w-1/2 min-w-75  mx-auto h-95 flex flex-col justify-center p-2 gap-5 m-6"
+      className="shadow-lg rounded-lg border border-gray-200 w-1/2 min-w-75  mx-auto h-95 flex flex-col justify-center p-2 gap-5 m-6"
 
     >
       <h1 className="text-lg text-center font-semibold">Fill in the Form</h1>
@@ -18,11 +18,12 @@ const FormPersonalDetails = () => {
         <label className="w-25 lg:text-lg text-nowrap" htmlFor="firstName">
           First Name:
         </label>
-        <input
+        <input required
           className="p-2 w-full outline-0 border border-gray-200 rounded-md"
           type="text"
           name="firstName"
           id="firstName"
+         
           value={details.firstName}
           onChange={(e) => setDetails((prevState) => ({ ...prevState, firstName: e.target.value }))}
         />
@@ -37,6 +38,7 @@ const FormPersonalDetails = () => {
           type="text"
           name="lastName"
           id="lastName"
+          required
           value={details.lastName}
           onChange={(e) => setDetails((prevState) => ({ ...prevState, lastName: e.target.value }))}
         />
@@ -60,7 +62,7 @@ const FormPersonalDetails = () => {
         <Buttons />
       </div>
     </div>
-  );
+  );gi
 };
 
 export default FormPersonalDetails;
